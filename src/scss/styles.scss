@@ -1,0 +1,308 @@
+
+@import "bower_components/susy/sass/susy";
+@import "bower_components/compass-breakpoint/stylesheets/breakpoint";
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+
+// Susy
+$susy: (
+  columns: 12,
+  gutters: 1/2,
+  math: fluid,
+  gutter-position: outside,
+);
+
+// variables /////////////////////////////////////
+
+  $font-fml: 'Bree Serif', 'Open Sans', sans-serif;
+  $font-sz: 17pt;
+  $color-tx: #black;
+  $color-bg: #f15a20;
+  $high-tide: 600px;
+
+  $color-primary: #6A9641;
+  $color-secondary: #EBB010;
+  $white: #EDE3C7;
+  $black: #2E2713;
+  $color-background: #B8BFCF;
+
+  $breakpoint-medium: 800px;
+  $font-size-default: 14pt;
+  $breakpoint-large: 1000px;
+//////////////////////////////////////////////////
+//                  NEW
+$breakpoint-small: 320px;
+$breakpoint-medium: 720px;
+$breakpoint-large: 920px;
+
+  $color-green: #53a665;
+  $color-white: #ffffff; //header-logo
+  $color-lite: #f7f7f7;
+  $color-gray: #808080; //main text
+  $color-dark: #333333;
+
+  $font-family: 'Bree Serif', 'Open Sans', sans-serif;
+//////////////////////////////////////////////////
+html,body, ul{
+  font-family: $font-family;
+  font-size: $font-sz;
+  //line-height: $line-height;
+  color: $color-dark;
+  background: url(/img/bg_5x5.png) repeat $color-dark;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+
+
+.container{
+    @include container(960px);
+    padding: 0 5%;
+}
+a {
+    text-decoration: none;
+}
+#header {        
+    .logo {
+        background: $color-white;        
+        span {
+            color: $color-dark; 
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        span+span {
+            color: $color-green;
+            font-size: 1.2em;
+        }
+    }
+}
+
+
+
+// ***********************************
+// МАЛЕНЬКИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-small) {
+  h1 {
+      font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  
+    // Заголовок сайта
+    #header { 
+        @include span(12);
+        .logo {            
+            padding: 2%;
+        }
+        nav {
+            padding: 5%;
+        }
+        a {
+            text-transform: uppercase;
+            list-style: none;
+            text-decoration: none;
+            li {
+                width: 100%;
+                border-bottom: 2px solid $color-dark;
+                color: $color-dark;
+                &:hover{
+                    color: $color-green;
+                    border-color: $color-green;
+                }
+            }        
+        }
+    }
+    
+  // Featured post
+    .featured-pst {
+        @include span(12);
+        .container {
+            position: relative;
+        }
+    
+        video {
+            width: 90%;
+        }
+        h1, h2 {   
+            a {
+                color:$color-dark;
+                background-color: $color-white;
+              }
+        }
+        p {
+            padding: .2em;
+            color: $color-gray;
+            background-color: $color-white;
+            a {
+                text-decoration: underline;
+                color: $color-green;
+            }
+            &:last-of-type {
+                //
+            }
+            &+a[rel='bookmark'] {
+                position: absolute;
+                right: 3%;
+                bottom: -3%;
+                font-size: .8em;
+                background-color: $color-green;
+                padding:.1em .5em;
+                text-transform: lowercase;
+                color: $color-white;
+            }
+        }
+    }
+    ///////////////// 
+    ///
+    ///  Section
+    /// 
+    
+    .section {
+        @include span(12);
+        text-align: center;
+    }
+    
+    .item {
+        position: relative;
+        margin: 1em 0;
+        h2 {
+            text-transform: uppercase;
+            color: $color-dark;
+            margin: 0;
+            span {
+                color: $color-green;
+            }
+        }
+        p {
+            margin: 1em;
+            color: darken($color-gray, 20%);
+            font-size: .9em;
+             &+a[rel='bookmark'] {                
+                padding:.1em .5em;
+                font-size: .8em;
+                background-color: $color-green;
+                text-transform: lowercase;
+                color: $color-white;
+            }
+        }
+        
+    }
+    .icon {
+        img {
+            width: 2em;
+            margin-top: 1em;
+            margin-bottom: 0;
+        }
+    }
+  // Подвал
+    
+    
+  .footer{
+    @include span(12);
+      
+      .social {
+          border-top: .1em solid $color-gray;    
+          text-align: center;
+          margin: .7em;
+          
+      }
+      .soc-icon {
+          display: inline-block;
+          margin: .4em .7em;
+          font-size: 1.2em;
+          a {
+              color: $color-gray;
+          }
+      }
+      
+  }
+}
+
+// ***********************************
+// СРЕДНИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-medium){
+
+  // Заголовок сайта
+    #header {
+        @include span(12);
+        text-align: center;
+        background: $color-white;
+        margin-bottom: 1em;
+        .logo {
+            padding-bottom: .5%;
+        }
+        nav {
+            padding: 0;
+            margin-bottom: .1em;
+        } 
+        ul {
+            background: $color-white;
+            height: 2.5em;
+        }
+        a {
+            display: inline-block;
+            li {
+                position: relative;
+                display: inline;
+                border-bottom: none;
+                font-size: .8em;
+                &:hover::before {
+                    position: absolute;
+                    top: 1em;
+                    content: '▼';
+                    color: $color-green;
+                    font-size: 1em;
+                    width: 100%;
+                    font-weight: bolder;
+                }
+            }
+            &:not(:last-child)::after {
+                color: $color-dark;
+                margin: 0 .9em;
+                content: '/';
+            }
+        }
+    }
+
+    // Основний пост
+    .featured-pst {
+        background: url(/img/5x5_stripes.png) repeat-x, url(/img/5x5_stripes.png) repeat-x right 150px, url(/img/5x5_stripes.png) repeat-x right 300px;
+        
+        h1, h2 {   
+            a {
+                color:$color-green;
+              }
+        }
+        p {
+            &+a[rel='bookmark'] {
+                right: 6%;
+                bottom: -6%;
+            }
+        }
+    }
+
+  
+}
+  
+// ***********************************
+// БОЛЬШИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-large){
+  // Заголовок сайта
+  #header{
+      @include span(12);
+      background-color: aqua;
+      span {
+          //float: left;
+      }
+      ul {
+          @include span(6 last);
+      }
+  }
+   // Последние посты
+}
