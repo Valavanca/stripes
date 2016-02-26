@@ -11,6 +11,14 @@ $susy: (
   gutters: 1/2,
   math: fluid,
   gutter-position: outside,
+  container: 920px,
+  
+  debug: (
+    image: show,
+    color: rgba(#66f, .5),
+    output: overlay,
+    toggle: top right,
+  )
 );
 
 // variables /////////////////////////////////////
@@ -34,7 +42,7 @@ $susy: (
 //                  NEW
 $breakpoint-small: 320px;
 $breakpoint-medium: 720px;
-$breakpoint-large: 920px;
+$breakpoint-large: 1000px;
 
   $color-green: #53a665;
   $color-white: #ffffff; //header-logo
@@ -54,7 +62,6 @@ html,body, ul{
   padding:0;
   overflow-x:hidden;
 }
-
 
 
 .container{
@@ -123,9 +130,11 @@ a {
         .container {
             position: relative;
         }
-    
-        video {
-            width: 90%;
+        .poster {
+            @include span(12);
+        }
+        iframe {
+            display: none;
         }
         h1, h2 {   
             a {
@@ -242,7 +251,7 @@ a {
         } 
         ul {
             background: $color-white;
-            height: 2.5em;
+            padding-bottom: .7em;
         }
         a {
             display: inline-block;
@@ -296,13 +305,44 @@ a {
   // Заголовок сайта
   #header{
       @include span(12);
-      background-color: aqua;
       span {
           //float: left;
       }
       ul {
-          @include span(6 last);
+          padding: 1em 0;
+      }
+      .logo {
+          @include span(first);
+          padding: 1em 0;
+      }
+      nav {
+          @include span(last);
+      }
+      .wrapper {
+          @include container();
       }
   }
+    
    // Последние посты
+    .featured-pst {
+        @include span(12);
+        .video, iframe {
+            display: inherit;
+            @include span(8 last);
+            margin: .5em;
+            width: 400px;
+        }
+        .poster {
+            display: none;
+        }
+    } 
+    // Items
+    .section {
+        @include span(12);
+        display: inline-block;
+        .item {
+            @include span(4);
+            @include push(.1);
+        }
+    }
 }
